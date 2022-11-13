@@ -4,10 +4,4 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Bean\" />
-    <Folder Include="Model\" />
-    <Folder Include="ModelView\" />
-  </ItemGroup>
-
 </Project>
