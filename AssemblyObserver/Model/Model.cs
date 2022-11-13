@@ -9,7 +9,7 @@ using AssemblyObserver.Model.Exception;
 
 namespace AssemblyObserver.Model
 {
-    public sealed class Model : IModel
+    internal sealed class Model : IModel
     {
         public IAssemblyInfo GetAssemblyInfo(string assemblyFileName)
         {
@@ -22,7 +22,13 @@ namespace AssemblyObserver.Model
             {
                 throw new ModelException("Assembly load error", e);
             }
-            return null;
+            var namespacesInfo = GetAssemblyNamespaces(loadedAssembly);
+            AssemblyInfo assemblyInfo = new AssemblyInfo();
+            foreach (var nsInfo in namespacesInfo)
+            {
+                assemblyInfo.AddNamespaceInfo(nsInfo);
+            }
+            return assemblyInfo;
         }
 
 
@@ -44,8 +50,14 @@ namespace AssemblyObserver.Model
                 }
                 //Add nested type to namespace
                 IType nestedType = Config.GetTypeInfo(type);
+                lastNamespace.AddTypeInfo(nestedType);
             }
-            return null;
+            List<INamespaceInfo> namespaceList = new List<INamespaceInfo>();
+            foreach (var namespaces in assemblyNamespaces)
+            {
+                namespaceList.Add(namespaces.Value);
+            }
+            return namespaceList;
         }
 
     }

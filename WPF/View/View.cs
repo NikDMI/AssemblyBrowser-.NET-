@@ -1,12 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AssemblyObserver.Bean.AssemblyParsing.Assembly;
+using AssemblyObserver.View;
 
 namespace WPF.View
 {
-    class View
+    public class View : IView
     {
+        public void ShowAssemblyInfo(IAssemblyInfo assemblyInfo)
+        {
+
+        }
+
+
+        internal View(MainWindow window)
+        {
+            _mainWindow = window;
+        }
+
+        private MainWindow _mainWindow;
     }
 }

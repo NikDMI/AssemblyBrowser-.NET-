@@ -7,7 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TreeView HorizontalAlignment="Left" Height="137" Margin="10,10,0,0" VerticalAlignment="Top" Width="372"/>
+        <TreeView x:Name="assemblyTree" HorizontalAlignment="Left" Height="137" Margin="10,10,0,0" VerticalAlignment="Top" Width="372">
+            <TreeViewItem Header="TreeViewItem" Height="100" Width="100"/>
+        </TreeView>
+        <Button Content="Button" x:Name="button1" HorizontalAlignment="Left" Margin="212,177,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>

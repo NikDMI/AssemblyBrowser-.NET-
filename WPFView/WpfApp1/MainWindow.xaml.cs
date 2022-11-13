@@ -18,10 +18,10 @@ using AssemblyObserver.Bean.AssemblyParsing.Assembly;
 using AssemblyObserver.Bean.AssemblyParsing.Namespace;
 using AssemblyObserver.Bean.AssemblyParsing.Types;
 
-namespace WPF
+namespace WpfApp1
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -38,7 +38,9 @@ namespace WPF
             foreach (var namespaceInfo in namespaces)
             {
                 TreeViewItem namespaceItem = new TreeViewItem();
-                namespaceItem.Name = "namespace " + namespaceInfo.GetNamespaceName();
+                Label lbl = new Label();
+                lbl.Content = "namespace " + namespaceInfo.GetNamespaceName();
+                namespaceItem.Header = lbl;
                 foreach (IType nestedType in namespaceInfo.GetNestedTypes())
                 {
                     namespaceItem.Items.Add(GetTreeViewItemByType(nestedType));
@@ -51,7 +53,9 @@ namespace WPF
         private TreeViewItem GetTreeViewItemByType(IType type)
         {
             TreeViewItem treeViewItem = new TreeViewItem();
-            treeViewItem.Name = type.GetTypeDescription();
+            Label lbl = new Label();
+            lbl.Content = type.GetTypeDescription();
+            treeViewItem.Header = lbl;
             List<IType> nestedTypes = type.GetNestedTypes();
             if (nestedTypes != null && nestedTypes.Count != 0)
             {
@@ -66,9 +70,8 @@ namespace WPF
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             IModel model = ModelFactory.GetModel();
-            //model.GetAssemblyInfo("D:\\БГУИР 3 КУРС\\СПП\\Labs\\LabWork_2\\FakerLib\\bin\\Debug\\netcoreapp3.1\\FakerLib.dll");
-            //ShowAssemblyTree(null);
+            IAssemblyInfo ass = model.GetAssemblyInfo("D:\\БГУИР 3 КУРС\\СПП\\Labs\\LabWork_2\\FakerLib\\bin\\Debug\\netcoreapp3.1\\FakerLib.dll");
+            ShowAssemblyTree(ass);
         }
-
     }
 }

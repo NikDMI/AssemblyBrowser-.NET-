@@ -8,5 +8,7 @@ namespace AssemblyObserver.Bean.AssemblyParsing.Assembly
     public interface IAssemblyInfo
     {
         void AddNamespaceInfo(INamespaceInfo namespaceInfo);
+
+        List<INamespaceInfo> GetAllNamespaces();
     }
 }

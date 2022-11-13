@@ -7,5 +7,7 @@ namespace AssemblyObserver.Bean.AssemblyParsing.Types
     public interface IType
     {
         public string GetTypeDescription();
+
+        public List<IType> GetNestedTypes();
     }
 }

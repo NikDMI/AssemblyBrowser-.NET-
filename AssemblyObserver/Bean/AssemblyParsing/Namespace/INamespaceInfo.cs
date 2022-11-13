@@ -10,5 +10,7 @@ namespace AssemblyObserver.Bean.AssemblyParsing.Namespace
         public void AddTypeInfo(IType typeInfo);
 
         public string GetNamespaceName();
+
+        public List<IType> GetNestedTypes();
     }
 }

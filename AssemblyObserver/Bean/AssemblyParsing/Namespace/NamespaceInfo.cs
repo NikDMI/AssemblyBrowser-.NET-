@@ -18,9 +18,16 @@ namespace AssemblyObserver.Bean.AssemblyParsing.Namespace
         }
 
 
+        public List<IType> GetNestedTypes()
+        {
+            return _nestedTypes;
+        }
+
+
         internal NamespaceInfo(string namespaceName)
         {
             _namespaceName = namespaceName;
+            _nestedTypes = new List<IType>();
         }
 
 

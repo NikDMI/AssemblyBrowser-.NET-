@@ -13,6 +13,12 @@ namespace AssemblyObserver.Bean.AssemblyParsing.Types
         }
 
 
+        public List<IType> GetNestedTypes()
+        {
+            return null;
+        }
+
+
         internal SimpleType(string typeDescription)
         {
             _typeDescription = typeDescription;
